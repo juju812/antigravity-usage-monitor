@@ -1763,8 +1763,15 @@
 /* --- Antigravity CLI 底部状态胶囊独立配置卡片（仅检测到 CLI 时展示） --- */
 .collapsible-section[hidden],
 .cli-statusline-group[hidden],
-.cli-statusline-detail[hidden] {
+.cli-statusline-detail[hidden],
+.mac-auto-relaunch-group[hidden] {
   display: none !important;
+}
+
+.mac-auto-relaunch-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .cli-statusline-detail {

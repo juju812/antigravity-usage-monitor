@@ -807,6 +807,8 @@ export const I18N_MESSAGES_DE_DE = Object.freeze({
   "settings.str.mountDual": "Dual (Titelleiste + Seitenleiste)",
   "settings.str.mountComposer": "Composer (Eingabefeld + Seitenleiste)",
   "settings.str.mountSidebar": "Nur Seitenleiste",
+  "settings.str.macAutoRelaunchToggle": "Automatischer Neustart bei macOS-Kaltstart",
+  "settings.str.macAutoRelaunchHint": "Startet bei einem Kaltstart (<60 s) ohne Debug-Port automatisch mit Flag neu (mit Schutz gegen Neustartschleifen)",
   "settings.bridge.restartTitle": "Startflag eingerichtet — Einmal neu starten",
   "settings.bridge.ctxRestartTitle": "Startflag eingerichtet — Neustart für Kontext-Override",
   "settings.bridge.restartBody": "--remote-debugging-port=0 wurde zu Verknüpfungen, Autostart und Protokollhandlern hinzugefügt (künftige Starts docken automatisch an). Unten klicken, um Hintergrundprozesse zu beenden und neu zu starten.",

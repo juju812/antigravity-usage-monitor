@@ -257,6 +257,7 @@ export const SettingsStructureTab = defineComponent({
   setup({ props, onCleanup }) {
     let activeThirdTab = normalizeStructureTabKey(uiStore.getState().settingsStructureTab);
     let draftWindowMountMode = 'dual';
+    let draftAutoRelaunchOnMissingDebugPort = false;
     let draftPopoverWidthMode = 'auto';
     let draftPopoverWidth = DEFAULT_CLIENT_POPOVER_WIDTH;
     let draftEnableCliStatusLine = true;
@@ -308,6 +309,7 @@ export const SettingsStructureTab = defineComponent({
         {
           windowMountMode: draftWindowMountMode,
           enableWindowOverlay: draftWindowMountMode !== 'sidebar',
+          autoRelaunchOnMissingDebugPort: draftAutoRelaunchOnMissingDebugPort,
           popoverWidthMode: draftPopoverWidthMode,
           popoverWidth: draftPopoverWidth,
           enableCliStatusLine: draftEnableCliStatusLine,
@@ -708,6 +710,39 @@ export const SettingsStructureTab = defineComponent({
 
     const mountBridgeNotice = BridgeStatusNotice({});
 
+    const macAutoRelaunchLabelEl = h('span', {
+      className: 'form-label',
+      text: t('settings.str.macAutoRelaunchToggle'),
+    });
+    const macAutoRelaunchHintEl = h('span', {
+      className: 'settings-hint-text',
+      text: t('settings.str.macAutoRelaunchHint'),
+    });
+    const macAutoRelaunchToggle = ToggleSwitch({
+      ariaLabelKey: 'settings.str.macAutoRelaunchToggle',
+      preset: 'enable',
+      modelValue: 'off',
+      onUpdateModelValue: (val) => {
+        draftAutoRelaunchOnMissingDebugPort = val === 'on';
+        syncMountSectionMeta();
+        props.onLayoutChange?.();
+        void persistStructurePatch(mountSection, {
+          autoRelaunchOnMissingDebugPort: draftAutoRelaunchOnMissingDebugPort,
+        });
+      },
+    });
+    const macAutoRelaunchGroupEl = h(
+      'div',
+      { className: 'mac-auto-relaunch-group', hidden: true },
+      [
+        h('div', { className: 'settings-inline-row' }, [
+          macAutoRelaunchLabelEl,
+          macAutoRelaunchToggle.el,
+        ]),
+        macAutoRelaunchHintEl,
+      ]
+    );
+
     const mountSection = CollapsibleSection({
       collapsible: false,
       icon: 'dock',
@@ -715,6 +750,7 @@ export const SettingsStructureTab = defineComponent({
       badgeText: t('settings.str.mountBadge', { count: draftTopbarSlots.length }),
       onReset: () => {
         draftWindowMountMode = 'dual';
+        draftAutoRelaunchOnMissingDebugPort = false;
         draftPopoverWidthMode = 'auto';
         draftPopoverWidth = DEFAULT_CLIENT_POPOVER_WIDTH;
         popoverWidthStepper.setProps({ modelValue: DEFAULT_CLIENT_POPOVER_WIDTH });
@@ -729,6 +765,7 @@ export const SettingsStructureTab = defineComponent({
           {
             windowMountMode: 'dual',
             enableWindowOverlay: true,
+            autoRelaunchOnMissingDebugPort: false,
             popoverWidthMode: 'auto',
             popoverWidth: DEFAULT_CLIENT_POPOVER_WIDTH,
             showTopbarMultiSession: true,
@@ -759,6 +796,7 @@ export const SettingsStructureTab = defineComponent({
           contextAgentModeToggle.el,
         ]),
         h('div', { className: 'form-row' }, [topbarSlotsList.el]),
+        macAutoRelaunchGroupEl,
       ],
     });
 
@@ -885,6 +923,11 @@ export const SettingsStructureTab = defineComponent({
         windowBridge: latestWindowBridge,
         hostPlatform: latestHostPlatform,
       });
+      const isMacHost = String(latestHostPlatform || '').trim().toLowerCase() === 'darwin';
+      patchAttr(macAutoRelaunchGroupEl, 'hidden', !isMacHost);
+      macAutoRelaunchToggle.setProps({
+        modelValue: draftAutoRelaunchOnMissingDebugPort ? 'on' : 'off',
+      });
       popoverWidthModeToggle.setProps({
         modelValue: draftPopoverWidthMode,
         options: getPopoverWidthModeOptions(),
@@ -910,6 +953,7 @@ export const SettingsStructureTab = defineComponent({
       );
       const isDefault =
         draftWindowMountMode === 'dual' &&
+        (!isMacHost || draftAutoRelaunchOnMissingDebugPort === false) &&
         draftPopoverWidthMode === 'auto' &&
         draftPopoverWidth === DEFAULT_CLIENT_POPOVER_WIDTH &&
         draftShowTopbarMulti === true &&
@@ -1830,6 +1874,7 @@ export const SettingsStructureTab = defineComponent({
         settings.windowMountMode,
         settings.enableWindowOverlay
       );
+      draftAutoRelaunchOnMissingDebugPort = settings.autoRelaunchOnMissingDebugPort === true;
       draftPopoverWidthMode = normalizeClientPopoverWidthMode(settings.popoverWidthMode);
       draftPopoverWidth = normalizeClientPopoverWidth(settings.popoverWidth);
       draftEnableCliStatusLine = settings.enableCliStatusLine !== false;
@@ -1875,6 +1920,9 @@ export const SettingsStructureTab = defineComponent({
       cliSection.refs.setTitle(t('settings.str.cliSection'));
       cliSection.refs.setResetLabel(t('settings.resetBtn'));
       patchText(mountModeLabelEl, t('settings.str.mountMode'));
+      patchText(macAutoRelaunchLabelEl, t('settings.str.macAutoRelaunchToggle'));
+      patchText(macAutoRelaunchHintEl, t('settings.str.macAutoRelaunchHint'));
+      macAutoRelaunchToggle.setProps({ ariaLabel: t('settings.str.macAutoRelaunchToggle') });
       patchText(popoverWidthLabelEl, t('settings.str.popoverWidthLabel'));
       popoverWidthStepper.setProps({ ariaLabel: t('settings.str.popoverWidthLabel') });
       patchText(multiToggleLabelEl, t('settings.str.multiToggle'));
@@ -1954,6 +2002,7 @@ export const SettingsStructureTab = defineComponent({
       overviewPreviewHost.destroy();
       stepTablePreview.destroy();
       windowMountSelect.destroy();
+      macAutoRelaunchToggle.destroy();
       popoverWidthStepper.destroy();
       popoverWidthModeToggle.destroy();
       multiSessionToggle.destroy();
@@ -1991,6 +2040,8 @@ export const SettingsStructureTab = defineComponent({
         overviewPreviewHost,
         stepTablePreview,
         windowMountSelect,
+        macAutoRelaunchToggle,
+        macAutoRelaunchGroupEl,
         multiSessionToggle,
         contextAgentModeToggle,
         cliCapsuleToggle,

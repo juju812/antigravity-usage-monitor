@@ -75,6 +75,7 @@ import {
   ensureDesktopLaunchEntriesConfigured,
   inspectMacOsLaunchWrapperStatus,
   removeMacOsLaunchWrapper,
+  resetMacAutoRelaunchState,
   triggerDesktopHostRelaunch,
 } from './desktop-launcher-config.mjs';
 import {
@@ -464,6 +465,12 @@ export function executeSettingsAction(data) {
   } else if (contextWindowScopeChanged) {
     void notifyModelContextWindowsChanged();
   }
+  if (
+    updated.autoRelaunchOnMissingDebugPort === true &&
+    current.autoRelaunchOnMissingDebugPort !== true
+  ) {
+    resetMacAutoRelaunchState();
+  }
   if ((updated.enableCliStatusLine !== false) !== (current.enableCliStatusLine !== false)) {
     ensureCliStatusLineConfigured({ enabled: updated.enableCliStatusLine !== false });
   }
@@ -601,6 +608,7 @@ export function executeResetSettingsAction() {
   ) {
     void notifyModelContextWindowsChanged();
   }
+  resetMacAutoRelaunchState();
   if ((updated.enableCliStatusLine !== false) !== (current.enableCliStatusLine !== false)) {
     ensureCliStatusLineConfigured({ enabled: updated.enableCliStatusLine !== false });
   }
@@ -861,6 +869,7 @@ export async function executeBridgeRelaunchAction(data = {}) {
     };
   }
 
+  resetMacAutoRelaunchState();
   if (preferredProduct !== 'desktop') {
     ensureIdeRemoteDebuggingArgv({ enabled: true });
   }

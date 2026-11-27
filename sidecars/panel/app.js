@@ -2374,6 +2374,8 @@ const I18N_MESSAGES_ZH_CN = Object.freeze({
   'settings.str.mountDual': '双栖挂载 (顶部栏 + 侧边栏)',
   'settings.str.mountComposer': '输入框挂载 (输入框 + 侧边栏)',
   'settings.str.mountSidebar': '仅侧边栏',
+  'settings.str.macAutoRelaunchToggle': 'macOS 冷启动自动带参重启',
+  'settings.str.macAutoRelaunchHint': '冷启动（60 秒内）缺少调试端口时自动带参重开恢复挂载，含防循环熔断',
   'settings.bridge.restartTitle': '已自动补齐启动参数，重启一次即可启用悬浮胶囊',
   'settings.bridge.ctxRestartTitle': '已自动补齐启动参数，重启一次即可激活上下文覆写',
   'settings.bridge.restartBody': '已自动为快捷方式、自启项及协议关联写入 --remote-debugging-port=0（后续通过常规快捷方式打开均自动生效）。点击下方按钮即可退出后台进程并立即生效。',
@@ -3625,6 +3627,8 @@ const I18N_MESSAGES_ZH_TW = Object.freeze({
   "settings.str.mountDual": "雙重掛載 (標題列 + 側邊欄)",
   "settings.str.mountComposer": "輸入框掛載 (輸入框 + 側邊欄)",
   "settings.str.mountSidebar": "僅側邊欄",
+  "settings.str.macAutoRelaunchToggle": "macOS 冷啟動自動帶參數重啟",
+  "settings.str.macAutoRelaunchHint": "冷啟動（60 秒內）缺少除錯連接埠時自動帶參數重開恢復掛載，含防迴圈熔斷",
   "settings.bridge.restartTitle": "已自動補齊啟動參數，重新啟動一次即可啟用懸浮膠囊",
   "settings.bridge.ctxRestartTitle": "已自動補齊啟動參數，重新啟動一次即可啟用上下文覆寫",
   "settings.bridge.restartBody": "已自動為捷徑、開機自啟項目及通訊協定關聯寫入 --remote-debugging-port=0（後續透過一般捷徑開啟皆會自動生效）。點擊下方按鈕即可關閉背景處理程序並立即重新啟動。",
@@ -4891,6 +4895,8 @@ const I18N_MESSAGES_EN_US = Object.freeze({
   'settings.str.mountDual': 'Dual Mount (Titlebar + Sidebar)',
   'settings.str.mountComposer': 'Composer Mount (Input Box + Sidebar)',
   'settings.str.mountSidebar': 'Sidebar Only',
+  'settings.str.macAutoRelaunchToggle': 'Auto-Relaunch on macOS Cold Start',
+  'settings.str.macAutoRelaunchHint': 'Automatically relaunch with debug flag when a fresh cold start (<60s) lacks it, with loop-protection circuit breaker',
   'settings.bridge.restartTitle': 'Launch Flag Auto-Configured — Restart Once to Activate',
   'settings.bridge.ctxRestartTitle': 'Launch Flag Auto-Configured — Restart Once for Context Override',
   'settings.bridge.restartBody': 'Automatically added --remote-debugging-port=0 to your shortcuts, startup entries, and protocol handlers (subsequent shortcut launches mount automatically). Click below to close background processes and relaunch now.',
@@ -6142,6 +6148,8 @@ const I18N_MESSAGES_JA_JP = Object.freeze({
   "settings.str.mountDual": "デュアル配置 (タイトルバー + サイドバー)",
   "settings.str.mountComposer": "入力欄配置 (入力欄 + サイドバー)",
   "settings.str.mountSidebar": "サイドバーのみ",
+  "settings.str.macAutoRelaunchToggle": "macOS コールド起動時に自動で再起動",
+  "settings.str.macAutoRelaunchHint": "新規起動（60秒以内）でデバッグポートが無い場合、ループ防止付きで自動的にフラグ付き再起動します",
   "settings.bridge.restartTitle": "起動引数を自動設定済み — 一度再起動すると有効化されます",
   "settings.bridge.ctxRestartTitle": "起動引数を自動設定済み — 一度再起動するとコンテキスト上書きが有効になります",
   "settings.bridge.restartBody": "ショートカット、自動起動項目、プロトコル関連付けに --remote-debugging-port=0 を自動追加しました（次回以降の通常起動から自動適用）。下ボタンでバックグラウンドプロセスを終了し今すぐ再起動します。",
@@ -7388,6 +7396,8 @@ const I18N_MESSAGES_KO_KR = Object.freeze({
   "settings.str.mountDual": "듀얼 마운트 (제목 표시줄 + 사이드바)",
   "settings.str.mountComposer": "입력창 마운트 (입력창 + 사이드바)",
   "settings.str.mountSidebar": "사이드바 전용",
+  "settings.str.macAutoRelaunchToggle": "macOS 콜드 스타트 시 자동 재시작",
+  "settings.str.macAutoRelaunchHint": "새로 실행한 직후(60초 이내) 디버그 포트가 없으면 무한 재시작 방지 보호와 함께 자동으로 다시 시작합니다",
   "settings.bridge.restartTitle": "실행 플래그 자동 설정 완료 — 한 번 재시작하여 활성화",
   "settings.bridge.ctxRestartTitle": "실행 플래그 자동 설정 완료 — 컨텍스트 재정의를 위해 한 번 재시작",
   "settings.bridge.restartBody": "바로가기, 시작 프로그램 및 프로토콜 핸들러에 --remote-debugging-port=0을 자동으로 추가했습니다(이후 바로가기 실행 시 자동 마운트). 아래 버튼을 클릭해 백그라운드 프로세스를 종료하고 지금 다시 실행하세요.",
@@ -8634,6 +8644,8 @@ const I18N_MESSAGES_DE_DE = Object.freeze({
   "settings.str.mountDual": "Dual (Titelleiste + Seitenleiste)",
   "settings.str.mountComposer": "Composer (Eingabefeld + Seitenleiste)",
   "settings.str.mountSidebar": "Nur Seitenleiste",
+  "settings.str.macAutoRelaunchToggle": "Automatischer Neustart bei macOS-Kaltstart",
+  "settings.str.macAutoRelaunchHint": "Startet bei einem Kaltstart (<60 s) ohne Debug-Port automatisch mit Flag neu (mit Schutz gegen Neustartschleifen)",
   "settings.bridge.restartTitle": "Startflag eingerichtet — Einmal neu starten",
   "settings.bridge.ctxRestartTitle": "Startflag eingerichtet — Neustart für Kontext-Override",
   "settings.bridge.restartBody": "--remote-debugging-port=0 wurde zu Verknüpfungen, Autostart und Protokollhandlern hinzugefügt (künftige Starts docken automatisch an). Unten klicken, um Hintergrundprozesse zu beenden und neu zu starten.",
@@ -9880,6 +9892,8 @@ const I18N_MESSAGES_FR_FR = Object.freeze({
   "settings.str.mountDual": "Double ancrage (Barre de titre + Latérale)",
   "settings.str.mountComposer": "Ancrage saisie (Zone de saisie + Latérale)",
   "settings.str.mountSidebar": "Barre latérale seule",
+  "settings.str.macAutoRelaunchToggle": "Relance automatique au démarrage à froid macOS",
+  "settings.str.macAutoRelaunchHint": "Relance automatiquement avec l'option de débogage si un démarrage à froid (<60 s) en est dépourvu, avec protection anti-boucle",
   "settings.bridge.restartTitle": "Option de lancement configurée — Redémarrez pour activer",
   "settings.bridge.ctxRestartTitle": "Option de lancement configurée — Redémarrez pour le contexte",
   "settings.bridge.restartBody": "--remote-debugging-port=0 ajouté automatiquement aux raccourcis, démarrages et protocoles (les prochains lancements monteront d’office). Cliquez ci-dessous pour fermer l’arrière-plan et relancer.",
@@ -14179,6 +14193,7 @@ const PORTABLE_SETTING_DESCRIPTORS = Object.freeze([
       }
     },
   },
+  boolField('autoRelaunchOnMissingDebugPort', false),
   normField('popoverWidthMode', normalizePopoverWidthMode),
   normField('popoverWidth', normalizePopoverWidth),
   boolField('enableCliStatusLine', true),
@@ -17479,6 +17494,12 @@ function isEquivalentTelemetry(prev, next) {
     return false;
   }
   if (pSet?.enableWindowOverlay !== nSet?.enableWindowOverlay) return false;
+  if (
+    Boolean(pSet?.autoRelaunchOnMissingDebugPort) !==
+    Boolean(nSet?.autoRelaunchOnMissingDebugPort)
+  ) {
+    return false;
+  }
   if ((pSet?.enableCliStatusLine !== false) !== (nSet?.enableCliStatusLine !== false)) {
     return false;
   }
@@ -42365,6 +42386,7 @@ const SettingsStructureTab = defineComponent({
   setup({ props, onCleanup }) {
     let activeThirdTab = normalizeStructureTabKey(uiStore.getState().settingsStructureTab);
     let draftWindowMountMode = 'dual';
+    let draftAutoRelaunchOnMissingDebugPort = false;
     let draftPopoverWidthMode = 'auto';
     let draftPopoverWidth = DEFAULT_CLIENT_POPOVER_WIDTH;
     let draftEnableCliStatusLine = true;
@@ -42416,6 +42438,7 @@ const SettingsStructureTab = defineComponent({
         {
           windowMountMode: draftWindowMountMode,
           enableWindowOverlay: draftWindowMountMode !== 'sidebar',
+          autoRelaunchOnMissingDebugPort: draftAutoRelaunchOnMissingDebugPort,
           popoverWidthMode: draftPopoverWidthMode,
           popoverWidth: draftPopoverWidth,
           enableCliStatusLine: draftEnableCliStatusLine,
@@ -42814,6 +42837,39 @@ const SettingsStructureTab = defineComponent({
 
     const mountBridgeNotice = BridgeStatusNotice({});
 
+    const macAutoRelaunchLabelEl = h('span', {
+      className: 'form-label',
+      text: t('settings.str.macAutoRelaunchToggle'),
+    });
+    const macAutoRelaunchHintEl = h('span', {
+      className: 'settings-hint-text',
+      text: t('settings.str.macAutoRelaunchHint'),
+    });
+    const macAutoRelaunchToggle = ToggleSwitch({
+      ariaLabelKey: 'settings.str.macAutoRelaunchToggle',
+      preset: 'enable',
+      modelValue: 'off',
+      onUpdateModelValue: (val) => {
+        draftAutoRelaunchOnMissingDebugPort = val === 'on';
+        syncMountSectionMeta();
+        props.onLayoutChange?.();
+        void persistStructurePatch(mountSection, {
+          autoRelaunchOnMissingDebugPort: draftAutoRelaunchOnMissingDebugPort,
+        });
+      },
+    });
+    const macAutoRelaunchGroupEl = h(
+      'div',
+      { className: 'mac-auto-relaunch-group', hidden: true },
+      [
+        h('div', { className: 'settings-inline-row' }, [
+          macAutoRelaunchLabelEl,
+          macAutoRelaunchToggle.el,
+        ]),
+        macAutoRelaunchHintEl,
+      ]
+    );
+
     const mountSection = CollapsibleSection({
       collapsible: false,
       icon: 'dock',
@@ -42821,6 +42877,7 @@ const SettingsStructureTab = defineComponent({
       badgeText: t('settings.str.mountBadge', { count: draftTopbarSlots.length }),
       onReset: () => {
         draftWindowMountMode = 'dual';
+        draftAutoRelaunchOnMissingDebugPort = false;
         draftPopoverWidthMode = 'auto';
         draftPopoverWidth = DEFAULT_CLIENT_POPOVER_WIDTH;
         popoverWidthStepper.setProps({ modelValue: DEFAULT_CLIENT_POPOVER_WIDTH });
@@ -42835,6 +42892,7 @@ const SettingsStructureTab = defineComponent({
           {
             windowMountMode: 'dual',
             enableWindowOverlay: true,
+            autoRelaunchOnMissingDebugPort: false,
             popoverWidthMode: 'auto',
             popoverWidth: DEFAULT_CLIENT_POPOVER_WIDTH,
             showTopbarMultiSession: true,
@@ -42865,6 +42923,7 @@ const SettingsStructureTab = defineComponent({
           contextAgentModeToggle.el,
         ]),
         h('div', { className: 'form-row' }, [topbarSlotsList.el]),
+        macAutoRelaunchGroupEl,
       ],
     });
 
@@ -42991,6 +43050,11 @@ const SettingsStructureTab = defineComponent({
         windowBridge: latestWindowBridge,
         hostPlatform: latestHostPlatform,
       });
+      const isMacHost = String(latestHostPlatform || '').trim().toLowerCase() === 'darwin';
+      patchAttr(macAutoRelaunchGroupEl, 'hidden', !isMacHost);
+      macAutoRelaunchToggle.setProps({
+        modelValue: draftAutoRelaunchOnMissingDebugPort ? 'on' : 'off',
+      });
       popoverWidthModeToggle.setProps({
         modelValue: draftPopoverWidthMode,
         options: getPopoverWidthModeOptions(),
@@ -43016,6 +43080,7 @@ const SettingsStructureTab = defineComponent({
       );
       const isDefault =
         draftWindowMountMode === 'dual' &&
+        (!isMacHost || draftAutoRelaunchOnMissingDebugPort === false) &&
         draftPopoverWidthMode === 'auto' &&
         draftPopoverWidth === DEFAULT_CLIENT_POPOVER_WIDTH &&
         draftShowTopbarMulti === true &&
@@ -43933,6 +43998,7 @@ const SettingsStructureTab = defineComponent({
         settings.windowMountMode,
         settings.enableWindowOverlay
       );
+      draftAutoRelaunchOnMissingDebugPort = settings.autoRelaunchOnMissingDebugPort === true;
       draftPopoverWidthMode = normalizeClientPopoverWidthMode(settings.popoverWidthMode);
       draftPopoverWidth = normalizeClientPopoverWidth(settings.popoverWidth);
       draftEnableCliStatusLine = settings.enableCliStatusLine !== false;
@@ -43978,6 +44044,9 @@ const SettingsStructureTab = defineComponent({
       cliSection.refs.setTitle(t('settings.str.cliSection'));
       cliSection.refs.setResetLabel(t('settings.resetBtn'));
       patchText(mountModeLabelEl, t('settings.str.mountMode'));
+      patchText(macAutoRelaunchLabelEl, t('settings.str.macAutoRelaunchToggle'));
+      patchText(macAutoRelaunchHintEl, t('settings.str.macAutoRelaunchHint'));
+      macAutoRelaunchToggle.setProps({ ariaLabel: t('settings.str.macAutoRelaunchToggle') });
       patchText(popoverWidthLabelEl, t('settings.str.popoverWidthLabel'));
       popoverWidthStepper.setProps({ ariaLabel: t('settings.str.popoverWidthLabel') });
       patchText(multiToggleLabelEl, t('settings.str.multiToggle'));
@@ -44057,6 +44126,7 @@ const SettingsStructureTab = defineComponent({
       overviewPreviewHost.destroy();
       stepTablePreview.destroy();
       windowMountSelect.destroy();
+      macAutoRelaunchToggle.destroy();
       popoverWidthStepper.destroy();
       popoverWidthModeToggle.destroy();
       multiSessionToggle.destroy();
@@ -44094,6 +44164,8 @@ const SettingsStructureTab = defineComponent({
         overviewPreviewHost,
         stepTablePreview,
         windowMountSelect,
+        macAutoRelaunchToggle,
+        macAutoRelaunchGroupEl,
         multiSessionToggle,
         contextAgentModeToggle,
         cliCapsuleToggle,

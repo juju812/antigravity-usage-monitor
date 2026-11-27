@@ -2904,6 +2904,7 @@ test('P2 regressions: bundler regex-after-paren lexer, shared URI/prompt/atomic 
     modelDisplayMode: 'upstream_compact',
     pluginUpdateMode: 'auto',
     windowMountMode: 'composer',
+    autoRelaunchOnMissingDebugPort: true,
     hoverSyncOverviewMetrics: false,
     hoverMetricStyle: 'large',
     hoverMetrics: ['tps', 'cache_hit', 'ttft', 'step_cost'],
@@ -2914,7 +2915,8 @@ test('P2 regressions: bundler regex-after-paren lexer, shared URI/prompt/atomic 
     accountQuotaRefreshMinutes: 180,
   });
   const parsedExport = JSON.parse(exported);
-  assert.equal(Object.keys(parsedExport.settings).length, 38);
+  assert.equal(Object.keys(parsedExport.settings).length, 39);
+  assert.equal(parsedExport.settings.autoRelaunchOnMissingDebugPort, true);
   assert.equal(parsedExport.settings.displayCurrency, 'MYR');
   assert.equal(parsedExport.settings.quotaDisplayMode, 'remaining');
   assert.equal('orchestratorIdMode' in parsedExport.settings, false);
